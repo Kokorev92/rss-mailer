@@ -1,3 +1,4 @@
 node_modules/
 package-lock.json
 settings.json
+db_settings.json
