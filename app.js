@@ -34,16 +34,12 @@ const sequelize = new Sequelize(db_settings.name,
     /// Получаем RSS сайта и формируем HTML-тело сообщения
     let feed = await parser.parseURL('https://dev-blog.ru/feed.xml')
     let html_post = "<body>"
-    console.log(feed.title)
-    console.log(feed)
     feed.items.forEach(item => {
         let item_str = `<a href="${item.link}">${item.title}</a> : ${item.content}<hr/>\n`
         html_post += item_str
-        console.log(item_str)
     })
 
     html_post += "</body>"
-    console.log(html_post)
 
     /// Модель данных таблицы в БД
     const email = sequelize.define("email_list", {
